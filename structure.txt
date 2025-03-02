@@ -1,0 +1,84 @@
+garden-planner/
+├── App.js
+├── app.json
+├── assets/
+│   ├── images/
+│   │   ├── plants/
+│   │   │   ├── alliums/
+│   │   │   │   ├── chives.png
+│   │   │   │   ├── garlic.png
+│   │   │   │   ├── leeks.png
+│   │   │   │   ├── onions.png
+│   │   │   │   └── shallots.png
+│   │   │   ├── cole_crops/
+│   │   │   │   ├── bok_choy.png
+│   │   │   │   ├── broccoli.png
+│   │   │   │   ├── broccoli_rabe.png
+│   │   │   │   ├── brussels_sprouts.png
+│   │   │   │   ├── cabbage.png
+│   │   │   │   └── cauliflower.png
+│   │   │   └── other_vegetables/
+│   │   │       ├── cucumber.png
+│   │   │       ├── pumpkin.png
+│   │   │       └── tomato.png
+│   │   └── icons/
+│   │       ├── begin_harvest.png
+│   │       ├── sow_outside.png
+│   │       ├── start_inside.png
+│   │       └── transplant.png
+│   └── locales/
+│       ├── en.json
+│       └── es.json
+├── src/
+│   ├── components/
+│   │   ├── common/
+│   │   │   ├── Header.js
+│   │   │   ├── PlantCard.js
+│   │   │   ├── BottomNavigation.js
+│   │   │   ├── FilterButton.js
+│   │   │   └── SearchBar.js
+│   │   ├── garden/
+│   │   │   ├── GardenGrid.js
+│   │   │   ├── PlantInGarden.js
+│   │   │   └── GardenActions.js
+│   │   ├── calendar/
+│   │   │   ├── PlantCalendar.js
+│   │   │   ├── MonthsBar.js
+│   │   │   └── GrowingTimeline.js
+│   │   └── plants/
+│   │       ├── PlantList.js
+│   │       ├── PlantDetails.js
+│   │       └── PlantCategories.js
+│   ├── screens/
+│   │   ├── GardensScreen.js
+│   │   ├── PlantsScreen.js
+│   │   ├── CalendarScreen.js
+│   │   ├── GuideScreen.js
+│   │   ├── NewGardenScreen.js
+│   │   ├── GardenDetailScreen.js
+│   │   └── PlantDetailScreen.js
+│   ├── models/
+│   │   ├── Plant.js
+│   │   ├── Garden.js
+│   │   └── GrowingInfo.js
+│   ├── viewmodels/
+│   │   ├── PlantsViewModel.js
+│   │   ├── GardensViewModel.js
+│   │   └── CalendarViewModel.js
+│   ├── services/
+│   │   ├── StorageService.js
+│   │   ├── PlantService.js
+│   │   └── TranslationService.js
+│   ├── utils/
+│   │   ├── colors.js
+│   │   ├── constants.js
+│   │   ├── dateUtils.js
+│   │   └── i18n.js
+│   ├── navigation/
+│   │   └── AppNavigator.js
+│   └── context/
+│       ├── AppContext.js
+│       └── LanguageContext.js
+├── babel.config.js
+├── package.json
+└── README.md

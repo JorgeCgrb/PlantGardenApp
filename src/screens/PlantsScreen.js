@@ -37,7 +37,7 @@ const PlantsScreen = ({ navigation }) => {
         style={styles.plantImage}
         resizeMode="contain"
       />
-      <Text style={styles.plantName}>{item.name}</Text>
+      <Text style={styles.plantName}>{t(item.name.toLowerCase())}</Text>
     </TouchableOpacity>
   );
 

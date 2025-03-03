@@ -21,7 +21,8 @@
         "backgroundImage": "./assets/adaptive-icon/background.png",
         "backgroundColor": "#121212"
       },
-      "package": "com.yourcompany.gardenplanner"
+      "package": "com.yourcompany.gardenplanner",
+      "permissions": ["READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"]
     },
     "web": {
       "favicon": "./assets/favicon.png"

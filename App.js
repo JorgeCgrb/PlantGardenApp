@@ -17,7 +17,7 @@ export default function App() {
     useEffect(() => {
         async function initialize() {
             try {
-                // Inicializa la base de datos de Storage
+                // Inicializa la base de datos Storage
                 await initializeDatabase();
 
                 // Inicializa la base de datos de plantas
@@ -27,6 +27,7 @@ export default function App() {
                 setIsLoading(false);
             } catch (error) {
                 console.error('Initialization error:', error);
+                // Incluso si hay error, permitimos que la app se inicie
                 setIsLoading(false);
             }
         }

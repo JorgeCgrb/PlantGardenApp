@@ -14,6 +14,7 @@ import SettingsScreen from '../screens/SettingsScreen';
 import NewGardenScreen from '../screens/NewGardenScreen';
 import GardenDetailScreen from '../screens/GardenDetailScreen';
 import PlantDetailScreen from '../screens/PlantDetailScreen';
+import DatabaseDebugScreen from '../screens/DatabaseDebugScreen';
 
 // Create navigators
 const Tab = createBottomTabNavigator();
@@ -22,6 +23,7 @@ const PlantsStack = createStackNavigator();
 const CalendarStack = createStackNavigator();
 const GuideStack = createStackNavigator();
 const SettingsStack = createStackNavigator();
+const DebugStack = createStackNavigator();
 
 // Opciones comunes para ocultar la barra de navegación
 const stackScreenOptions = {
@@ -72,7 +74,17 @@ function SettingsStackScreen() {
     return (
         <SettingsStack.Navigator screenOptions={stackScreenOptions}>
             <SettingsStack.Screen name="Settings" component={SettingsScreen} />
+            <SettingsStack.Screen name="DatabaseDebug" component={DatabaseDebugScreen} />
         </SettingsStack.Navigator>
+    );
+}
+
+// Debug stack (opcional, para poder acceder directamente si lo prefieres)
+function DebugStackScreen() {
+    return (
+        <DebugStack.Navigator screenOptions={stackScreenOptions}>
+            <DebugStack.Screen name="DatabaseDebug" component={DatabaseDebugScreen} />
+        </DebugStack.Navigator>
     );
 }
 
@@ -139,6 +151,16 @@ export default function AppNavigator() {
                     tabBarLabel: t('settings'),
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons name="cog" color={color} size={size} />
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="DebugTab"
+                component={DebugStackScreen}
+                options={{
+                    tabBarLabel: 'Debug',
+                    tabBarIcon: ({ color, size }) => (
+                        <MaterialCommunityIcons name="bug" color={color} size={size} />
                     ),
                 }}
             />

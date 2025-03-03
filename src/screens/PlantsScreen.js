@@ -1,19 +1,45 @@
 // src/screens/PlantsScreen.js
-import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { usePlantsViewModel } from '../viewmodels/PlantsViewModel';
 import { useTranslation } from '../utils/i18n';
 import SearchBar from '../components/common/SearchBar';
+import { getPlantImage } from '../utils/assetUtils';
 
 const PlantsScreen = ({ navigation }) => {
   const { t } = useTranslation();
-  const { searchQuery, setSearchQuery } = usePlantsViewModel();
+  const {
+    plants,
+    filteredPlants,
+    searchQuery,
+    setSearchQuery
+  } = usePlantsViewModel();
 
   // Función para manejar la búsqueda
   const handleSearch = (query) => {
     setSearchQuery(query);
   };
+
+  // Función para manejar la selección de una planta
+  const handlePlantSelect = (plant) => {
+    navigation.navigate('PlantDetail', { plantId: plant.id });
+  };
+
+  // Renderizar un elemento de planta
+  const renderPlantItem = ({ item }) => (
+    <TouchableOpacity
+      style={styles.plantCard}
+      onPress={() => handlePlantSelect(item)}
+    >
+      <Image
+        source={getPlantImage(item.name.toLowerCase())}
+        style={styles.plantImage}
+        resizeMode="contain"
+      />
+      <Text style={styles.plantName}>{item.name}</Text>
+    </TouchableOpacity>
+  );
 
   return (
     <SafeAreaView style={styles.container}>
@@ -22,15 +48,34 @@ const PlantsScreen = ({ navigation }) => {
         value={searchQuery}
         onChangeText={handleSearch}
       />
+
       <View style={styles.content}>
-        <Text style={styles.title}>{t('plants')}</Text>
-        <Text style={styles.message}>Plants will be displayed here.</Text>
-        {searchQuery ? (
-          <Text style={styles.searchInfo}>
-            Searching for: "{searchQuery}"
-          </Text>
-        ) : null}
+        {filteredPlants.length > 0 ? (
+          <FlatList
+            data={filteredPlants}
+            renderItem={renderPlantItem}
+            keyExtractor={(item) => item.id}
+            numColumns={2}
+            contentContainerStyle={styles.listContainer}
+          />
+        ) : (
+          <View style={styles.emptyContainer}>
+            <Text style={styles.emptyText}>
+              {searchQuery
+                ? t('no_results_found')
+                : t('no_plants_available')}
+            </Text>
+          </View>
+        )}
       </View>
+
+      {/* Botón para añadir planta */}
+      <TouchableOpacity
+        style={styles.addButton}
+        onPress={() => console.log('Add plant')}
+      >
+        <Text style={styles.addButtonText}>+ {t('add_plant')}</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -42,27 +87,55 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+    padding: 8,
+  },
+  listContainer: {
+    paddingVertical: 8,
+  },
+  plantCard: {
+    flex: 1,
+    margin: 8,
+    backgroundColor: '#1E1E1E',
+    borderRadius: 8,
+    padding: 12,
+    alignItems: 'center',
+    maxWidth: '46%',
+  },
+  plantImage: {
+    width: 80,
+    height: 80,
+    marginBottom: 8,
+  },
+  plantName: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  emptyContainer: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: 'white',
-    marginBottom: 16,
-  },
-  message: {
-    fontSize: 16,
+  emptyText: {
     color: '#AAA',
+    fontSize: 16,
     textAlign: 'center',
-    marginBottom: 10,
   },
-  searchInfo: {
-    fontSize: 14,
-    color: '#4CAF50',
-    marginTop: 10,
-  }
+  addButton: {
+    position: 'absolute',
+    right: 16,
+    bottom: 16,
+    backgroundColor: '#4CAF50',
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    borderRadius: 24,
+    elevation: 4,
+  },
+  addButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
 });
 
 export default PlantsScreen;

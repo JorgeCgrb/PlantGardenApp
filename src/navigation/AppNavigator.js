@@ -23,10 +23,15 @@ const CalendarStack = createStackNavigator();
 const GuideStack = createStackNavigator();
 const SettingsStack = createStackNavigator();
 
+// Opciones comunes para ocultar la barra de navegación
+const stackScreenOptions = {
+    headerShown: false
+};
+
 // Gardens stack
 function GardensStackScreen() {
     return (
-        <GardensStack.Navigator>
+        <GardensStack.Navigator screenOptions={stackScreenOptions}>
             <GardensStack.Screen name="Gardens" component={GardensScreen} />
             <GardensStack.Screen name="GardenDetail" component={GardenDetailScreen} />
             <GardensStack.Screen name="NewGarden" component={NewGardenScreen} />
@@ -37,7 +42,7 @@ function GardensStackScreen() {
 // Plants stack
 function PlantsStackScreen() {
     return (
-        <PlantsStack.Navigator>
+        <PlantsStack.Navigator screenOptions={stackScreenOptions}>
             <PlantsStack.Screen name="Plants" component={PlantsScreen} />
             <PlantsStack.Screen name="PlantDetail" component={PlantDetailScreen} />
         </PlantsStack.Navigator>
@@ -47,7 +52,7 @@ function PlantsStackScreen() {
 // Calendar stack
 function CalendarStackScreen() {
     return (
-        <CalendarStack.Navigator>
+        <CalendarStack.Navigator screenOptions={stackScreenOptions}>
             <CalendarStack.Screen name="Calendar" component={CalendarScreen} />
         </CalendarStack.Navigator>
     );
@@ -56,7 +61,7 @@ function CalendarStackScreen() {
 // Guide stack
 function GuideStackScreen() {
     return (
-        <GuideStack.Navigator>
+        <GuideStack.Navigator screenOptions={stackScreenOptions}>
             <GuideStack.Screen name="Guide" component={GuideScreen} />
         </GuideStack.Navigator>
     );
@@ -65,7 +70,7 @@ function GuideStackScreen() {
 // Settings stack
 function SettingsStackScreen() {
     return (
-        <SettingsStack.Navigator>
+        <SettingsStack.Navigator screenOptions={stackScreenOptions}>
             <SettingsStack.Screen name="Settings" component={SettingsScreen} />
         </SettingsStack.Navigator>
     );

@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, TextInput, TouchableOpacity, Alert } from 'reac
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useGardensViewModel } from '../viewmodels/GardensViewModel';
-import { useTranslation } from '../utils/i18n';
+import { useTranslation } from 'react-i18next';
 import Garden from '../models/Garden';
 
 const NewGardenScreen = ({ navigation }) => {

@@ -1,16 +1,18 @@
-// src/components/common/SearchBar.js
 import React from 'react';
 import { View, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useTranslation } from 'react-i18next';
 
 const SearchBar = ({ placeholder, value, onChangeText, onClear }) => {
+  const { t } = useTranslation();
+
   return (
     <View style={styles.container}>
       <View style={styles.searchContainer}>
         <Ionicons name="search" size={20} color="#999" style={styles.searchIcon} />
         <TextInput
           style={styles.input}
-          placeholder={placeholder || "Search..."}
+          placeholder={placeholder || t('search')}
           placeholderTextColor="#999"
           value={value}
           onChangeText={onChangeText}

@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useCalendarViewModel } from '../viewmodels/CalendarViewModel';
-import { useTranslation } from '../utils/i18n';
+import { useTranslation } from 'react-i18next';
 import SearchBar from '../components/common/SearchBar';
 
 const CalendarScreen = ({ navigation }) => {

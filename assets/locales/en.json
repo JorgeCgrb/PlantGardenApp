@@ -50,5 +50,16 @@
   "cabbage": "Cabbage",
   "cauliflower": "Cauliflower",
   "settings": "Settings",
-  "language": "Language"
+  "language": "Language",
+  "chives_description": "Chives are perennial herbs with mild onion flavor. They produce edible purple flowers that attract pollinators.",
+  "garlic_description": "Garlic is a pungent bulb vegetable that is easy to grow. Plant in fall for harvest the following summer.",
+  "leeks_description": "Leeks are cold-hardy alliums with a mild onion flavor. They require a long growing season.",
+  "onions_description": "Onions are versatile vegetables grown for their bulbs. Choose varieties based on your daylight hours.",
+  "shallots_description": "Shallots are milder than onions and grow in clusters. They are easy to grow and store well.",
+  "default_garden_name": "Horizontal Bed",
+  "square_garden_name": "Square Bed",
+  "full_sun": "Full Sun",
+  "moderate": "Moderate",
+  "low": "Low",
+  "low_to_moderate": "Low to Moderate"
 }

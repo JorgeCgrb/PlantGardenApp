@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Image, ScrollView, TouchableOpacity } from 'rea
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { usePlantsViewModel } from '../viewmodels/PlantsViewModel';
-import { useTranslation } from '../utils/i18n';
+import { useTranslation } from 'react-i18next';
 import GrowingTimeline from '../components/calendar/GrowingTimeline';
 import { getPlantImage } from '../utils/assetUtils';
 
@@ -49,7 +49,7 @@ const PlantDetailScreen = ({ route, navigation }) => {
                 >
                     <Ionicons name="arrow-back" size={24} color="white" />
                 </TouchableOpacity>
-                <Text style={styles.title}>{plant.name}</Text>
+                <Text style={styles.title}>{t(plant.name.toLowerCase())}</Text>
                 <TouchableOpacity
                     onPress={() => {/* Show options menu */}}
                     style={styles.optionsButton}
@@ -69,7 +69,7 @@ const PlantDetailScreen = ({ route, navigation }) => {
 
                 <View style={styles.infoContainer}>
                     <Text style={styles.sectionTitle}>{t('description')}</Text>
-                    <Text style={styles.description}>{plant.description || t('no_description')}</Text>
+                    <Text style={styles.description}>{t(`${plant.id}_description`, plant.description) || t('no_description')}</Text>
 
                     <Text style={styles.sectionTitle}>{t('growing_calendar')}</Text>
                     <View style={styles.calendarContainer}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useTranslation } from '../utils/i18n';
+import { useTranslation } from 'react-i18next';
 
 const GuideScreen = ({ navigation }) => {
   const { t } = useTranslation();

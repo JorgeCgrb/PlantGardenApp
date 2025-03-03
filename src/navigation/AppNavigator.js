@@ -3,7 +3,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useTranslation } from '../utils/i18n';
+import { useTranslation } from 'react-i18next';
 
 // Import screens
 import GardensScreen from '../screens/GardensScreen';

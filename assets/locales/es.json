@@ -50,5 +50,16 @@
   "cabbage": "Repollo",
   "cauliflower": "Coliflor",
   "settings": "Configuración",
-  "language": "Idioma"
+  "language": "Idioma",
+  "chives_description": "El cebollín es una hierba perenne con sabor suave a cebolla. Produce flores moradas comestibles que atraen a los polinizadores.",
+  "garlic_description": "El ajo es un bulbo picante que es fácil de cultivar. Plántalo en otoño para cosechar el siguiente verano.",
+  "leeks_description": "Los puerros son aliáceas resistentes al frío con sabor suave a cebolla. Requieren una temporada de crecimiento larga.",
+  "onions_description": "Las cebollas son vegetales versátiles que se cultivan por sus bulbos. Elige variedades según tus horas de luz diurna.",
+  "shallots_description": "Los chalotes son más suaves que las cebollas y crecen en racimos. Son fáciles de cultivar y se conservan bien.",
+  "default_garden_name": "Bancal Horizontal",
+  "square_garden_name": "Bancal Cuadrado",
+  "full_sun": "Pleno Sol",
+  "moderate": "Moderado",
+  "low": "Bajo",
+  "low_to_moderate": "Bajo a Moderado"
 }

@@ -1,15 +1,14 @@
-// src/screens/SettingsScreen.js
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useTranslation } from '../utils/i18n';
+import { useTranslation } from 'react-i18next';
+import { changeLanguage } from '../utils/i18n';
 
-const SettingsScreen = ({ navigation }) => {
-  const { t, language, changeLanguage, languages } = useTranslation();
+const SettingsScreen = () => {
+  const { t, i18n } = useTranslation();
 
-  // Cambiar el idioma
-  const handleLanguageChange = (langCode) => {
-    changeLanguage(langCode);
+  const handleLanguageChange = async (language) => {
+    await changeLanguage(language);
   };
 
   return (
@@ -23,7 +22,7 @@ const SettingsScreen = ({ navigation }) => {
           <TouchableOpacity
             style={[
               styles.languageButton,
-              language === 'en' && styles.selectedLanguage
+              i18n.language === 'en' && styles.selectedLanguage
             ]}
             onPress={() => handleLanguageChange('en')}
           >
@@ -33,7 +32,7 @@ const SettingsScreen = ({ navigation }) => {
           <TouchableOpacity
             style={[
               styles.languageButton,
-              language === 'es' && styles.selectedLanguage
+              i18n.language === 'es' && styles.selectedLanguage
             ]}
             onPress={() => handleLanguageChange('es')}
           >

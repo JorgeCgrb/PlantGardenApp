@@ -1,7 +1,9 @@
+// src/utils/seedData.js
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Plant from '../models/Plant';
 import Garden from '../models/Garden';
 import GrowingInfo from '../models/GrowingInfo';
+import i18next from 'i18next';
 
 // Storage keys
 const STORAGE_KEYS = {
@@ -37,32 +39,38 @@ const generatePlantsData = () => {
     return [
         new Plant(
             'chives',
-            'Chives',
+            'Chives', // Mantener el nombre en inglés como ID
             'alliums',
-            'chives', // We'll use just the name; the assetUtils will resolve the full path
-            'Chives are perennial herbs with mild onion flavor. They produce edible purple flowers that attract pollinators.',
+            'chives', // Nombre para buscar la imagen
+            i18next.t('chives_description', 'Chives are perennial herbs with mild onion flavor. They produce edible purple flowers that attract pollinators.'),
             new GrowingInfo(
                 [1, 2, 3], // Start indoor months (Feb-Apr)
                 [3, 4, 5], // Transplant months (Apr-Jun)
                 [4, 5, 6, 7, 8], // Sow outdoor months (May-Sep)
                 [5, 6, 7, 8, 9, 10], // Harvest months (Jun-Nov)
                 16, // Plants per square foot
-                { sunRequirements: 'Full Sun', waterNeeds: 'Moderate' }
+                {
+                    sunRequirements: 'full_sun',
+                    waterNeeds: 'moderate'
+                }
             )
         ),
         new Plant(
             'garlic',
             'Garlic',
             'alliums',
-            'garlic', // Just the name for image lookup
-            'Garlic is a pungent bulb vegetable that is easy to grow. Plant in fall for harvest the following summer.',
+            'garlic',
+            i18next.t('garlic_description', 'Garlic is a pungent bulb vegetable that is easy to grow. Plant in fall for harvest the following summer.'),
             new GrowingInfo(
                 [], // Start indoor months
                 [], // Transplant months
                 [8, 9, 10], // Sow outdoor months (Sep-Nov)
                 [5, 6, 7], // Harvest months (Jun-Aug)
                 9, // Plants per square foot
-                { sunRequirements: 'Full Sun', waterNeeds: 'Low' }
+                {
+                    sunRequirements: 'full_sun',
+                    waterNeeds: 'low'
+                }
             )
         ),
         new Plant(
@@ -70,14 +78,17 @@ const generatePlantsData = () => {
             'Leeks',
             'alliums',
             'leeks',
-            'Leeks are cold-hardy alliums with a mild onion flavor. They require a long growing season.',
+            i18next.t('leeks_description', 'Leeks are cold-hardy alliums with a mild onion flavor. They require a long growing season.'),
             new GrowingInfo(
                 [0, 1, 2], // Start indoor months (Jan-Mar)
                 [3, 4, 5], // Transplant months (Apr-Jun)
                 [3, 4, 5], // Sow outdoor months (Apr-Jun)
                 [7, 8, 9, 10, 11], // Harvest months (Aug-Dec)
                 9, // Plants per square foot
-                { sunRequirements: 'Full Sun', waterNeeds: 'Moderate' }
+                {
+                    sunRequirements: 'full_sun',
+                    waterNeeds: 'moderate'
+                }
             )
         ),
         new Plant(
@@ -85,14 +96,17 @@ const generatePlantsData = () => {
             'Onions',
             'alliums',
             'onions',
-            'Onions are versatile vegetables grown for their bulbs. Choose varieties based on your daylight hours.',
+            i18next.t('onions_description', 'Onions are versatile vegetables grown for their bulbs. Choose varieties based on your daylight hours.'),
             new GrowingInfo(
                 [0, 1, 2], // Start indoor months (Jan-Mar)
                 [3, 4], // Transplant months (Apr-May)
                 [3, 4], // Sow outdoor months (Apr-May)
                 [6, 7, 8], // Harvest months (Jul-Sep)
                 9, // Plants per square foot
-                { sunRequirements: 'Full Sun', waterNeeds: 'Moderate' }
+                {
+                    sunRequirements: 'full_sun',
+                    waterNeeds: 'moderate'
+                }
             )
         ),
         new Plant(
@@ -100,14 +114,17 @@ const generatePlantsData = () => {
             'Shallots',
             'alliums',
             'shallots',
-            'Shallots are milder than onions and grow in clusters. They are easy to grow and store well.',
+            i18next.t('shallots_description', 'Shallots are milder than onions and grow in clusters. They are easy to grow and store well.'),
             new GrowingInfo(
                 [], // Start indoor months
                 [], // Transplant months
                 [1, 2, 3, 9, 10], // Sow outdoor months (Feb-Apr, Oct-Nov)
                 [6, 7, 8], // Harvest months (Jul-Sep)
                 9, // Plants per square foot
-                { sunRequirements: 'Full Sun', waterNeeds: 'Low to Moderate' }
+                {
+                    sunRequirements: 'full_sun',
+                    waterNeeds: 'low_to_moderate'
+                }
             )
         ),
         // Add more plants as needed
@@ -122,7 +139,7 @@ const generateGardensData = () => {
     return [
         new Garden(
             'garden-1',
-            'Bancal horizontal',
+            i18next.t('default_garden_name', 'Horizontal Bed'),
             3,
             24,
             [
@@ -133,7 +150,7 @@ const generateGardensData = () => {
         ),
         new Garden(
             'garden-2',
-            'Bancal 1',
+            i18next.t('square_garden_name', 'Square Bed'),
             12,
             3,
             []

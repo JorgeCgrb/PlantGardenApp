@@ -61,7 +61,13 @@ const gardenElements = {
  * @returns {Object} - Image source object
  */
 export const getPlantImage = (plantName) => {
-  return plantImages[plantName] || plantImages.default;
+  // Verifica que plantName no sea undefined
+  if (!plantName) {
+    return plantImages.default;
+  }
+
+  // Intenta encontrar la imagen por nombre o devuelve la default
+  return plantImages[plantName.toLowerCase()] || plantImages.default;
 };
 
 /**

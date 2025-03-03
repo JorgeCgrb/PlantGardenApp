@@ -1,5 +1,6 @@
-// src/screens/PlantsScreen.js
-import React from 'react';
+// src/screens/PlantsScreen.js - Corrige los renderizadores de plantas
+
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { usePlantsViewModel } from '../viewmodels/PlantsViewModel';
@@ -27,19 +28,25 @@ const PlantsScreen = ({ navigation }) => {
   };
 
   // Renderizar un elemento de planta
-  const renderPlantItem = ({ item }) => (
-    <TouchableOpacity
-      style={styles.plantCard}
-      onPress={() => handlePlantSelect(item)}
-    >
-      <Image
-        source={getPlantImage(item.name.toLowerCase())}
-        style={styles.plantImage}
-        resizeMode="contain"
-      />
-      <Text style={styles.plantName}>{t(item.name.toLowerCase())}</Text>
-    </TouchableOpacity>
-  );
+  const renderPlantItem = ({ item }) => {
+    // Asegúrate de que el valor pasado a getPlantImage no sea undefined
+    const imageName = item.imagePath || item.name?.toLowerCase();
+
+    return (
+      <TouchableOpacity
+        style={styles.plantCard}
+        onPress={() => handlePlantSelect(item)}
+      >
+        <Image
+          source={getPlantImage(imageName)}
+          style={styles.plantImage}
+          resizeMode="contain"
+        />
+        <Text style={styles.plantName}>{t(item.name?.toLowerCase() || 'unknown_plant')}</Text>
+        <Text style={styles.plantCategory}>{item.category}</Text>
+      </TouchableOpacity>
+    );
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -110,6 +117,12 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  plantCategory: {
+    color: '#888',
+    fontSize: 12,
+    textAlign: 'center',
+    marginTop: 4,
   },
   emptyContainer: {
     flex: 1,

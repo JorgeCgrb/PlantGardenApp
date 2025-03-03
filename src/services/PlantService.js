@@ -1,11 +1,7 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// src/services/PlantService.js (modificado)
 import Plant from '../models/Plant';
 import GrowingInfo from '../models/GrowingInfo';
-
-// Storage keys
-const STORAGE_KEYS = {
-    PLANTS: 'plants'
-};
+import { PlantDatabaseService } from './PlantDatabaseService';
 
 /**
  * Service for plant data operations
@@ -17,34 +13,7 @@ export const PlantService = {
      */
     async getPlants() {
         try {
-            const plantsData = await AsyncStorage.getItem(STORAGE_KEYS.PLANTS);
-
-            if (!plantsData) return [];
-
-            // Parse and convert to Plant objects
-            const plants = JSON.parse(plantsData);
-            return plants.map(plantData => {
-                // Create GrowingInfo object
-                const growingInfo = new GrowingInfo(
-                    plantData.growingInfo.startIndoorMonths,
-                    plantData.growingInfo.transplantMonths,
-                    plantData.growingInfo.sowOutdoorMonths,
-                    plantData.growingInfo.harvestMonths,
-                    plantData.growingInfo.plantsPerSquare,
-                    plantData.growingInfo.additionalInfo
-                );
-
-                // Create Plant object
-                return new Plant(
-                    plantData.id,
-                    plantData.name,
-                    plantData.category,
-                    plantData.imagePath,
-                    plantData.description,
-                    growingInfo,
-                    plantData.varieties
-                );
-            });
+            return await PlantDatabaseService.getPlants();
         } catch (error) {
             console.error('Error getting plants:', error);
             return [];
@@ -58,8 +27,7 @@ export const PlantService = {
      */
     async getPlantById(plantId) {
         try {
-            const plants = await this.getPlants();
-            return plants.find(plant => plant.id === plantId) || null;
+            return await PlantDatabaseService.getPlantById(plantId);
         } catch (error) {
             console.error('Error getting plant by ID:', error);
             return null;
@@ -73,15 +41,7 @@ export const PlantService = {
      */
     async addPlant(plant) {
         try {
-            const plants = await this.getPlants();
-
-            // Add the new plant
-            plants.push(plant);
-
-            // Save to storage
-            await AsyncStorage.setItem(STORAGE_KEYS.PLANTS, JSON.stringify(plants));
-
-            return plant;
+            return await PlantDatabaseService.addPlant(plant);
         } catch (error) {
             console.error('Error adding plant:', error);
             throw error;
@@ -95,17 +55,7 @@ export const PlantService = {
      */
     async updatePlant(plant) {
         try {
-            const plants = await this.getPlants();
-
-            // Find and update plant
-            const updatedPlants = plants.map(p =>
-                p.id === plant.id ? plant : p
-            );
-
-            // Save to storage
-            await AsyncStorage.setItem(STORAGE_KEYS.PLANTS, JSON.stringify(updatedPlants));
-
-            return plant;
+            return await PlantDatabaseService.updatePlant(plant);
         } catch (error) {
             console.error('Error updating plant:', error);
             throw error;
@@ -119,13 +69,7 @@ export const PlantService = {
      */
     async deletePlant(plantId) {
         try {
-            const plants = await this.getPlants();
-
-            // Filter out the deleted plant
-            const updatedPlants = plants.filter(plant => plant.id !== plantId);
-
-            // Save to storage
-            await AsyncStorage.setItem(STORAGE_KEYS.PLANTS, JSON.stringify(updatedPlants));
+            await PlantDatabaseService.deletePlant(plantId);
         } catch (error) {
             console.error('Error deleting plant:', error);
             throw error;

@@ -11,31 +11,20 @@
       "resizeMode": "contain",
       "backgroundColor": "#121212"
     },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/adaptive-icon/foreground.png",
+        "backgroundImage": "./assets/adaptive-icon/background.png",
         "backgroundColor": "#121212"
       },
       "package": "com.yourcompany.gardenplanner"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "locales": {
-      "en": "./assets/locales/en.json",
-      "es": "./assets/locales/es.json"
-    },
-    "plugins": [
-      "expo-localization"
-    ]
+    }
   }
 }

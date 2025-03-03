@@ -1,7 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
-import { en, es } from '../assets/locales';
 
 // Storage keys
 const STORAGE_KEYS = {
@@ -14,12 +13,6 @@ export const LANGUAGES = {
     ES: 'es'
 };
 
-// Translation resources
-const translations = {
-    en,
-    es
-};
-
 /**
  * Service for translation and localization
  */
@@ -29,8 +22,12 @@ export const TranslationService = {
      */
     async initialize() {
         try {
+            // Load translations dynamically
+            const en = require('../assets/locales/en.json');
+            const es = require('../assets/locales/es.json');
+
             // Set up i18n
-            i18n.translations = translations;
+            i18n.translations = { en, es };
 
             // Get saved language preference or use device locale
             const savedLanguage = await AsyncStorage.getItem(STORAGE_KEYS.LANGUAGE);
@@ -38,7 +35,7 @@ export const TranslationService = {
 
             // Check if device locale is supported, default to English if not
             const language = savedLanguage ||
-                (Object.keys(translations).includes(deviceLocale) ? deviceLocale : LANGUAGES.EN);
+                (Object.keys(i18n.translations).includes(deviceLocale) ? deviceLocale : LANGUAGES.EN);
 
             // Set language
             i18n.locale = language;

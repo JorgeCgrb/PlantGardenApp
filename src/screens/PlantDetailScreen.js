@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { usePlantsViewModel } from '../viewmodels/PlantsViewModel';
 import { useTranslation } from '../utils/i18n';
 import GrowingTimeline from '../components/calendar/GrowingTimeline';
+import { getPlantImage } from '../utils/assetUtils';
 
 const PlantDetailScreen = ({ route, navigation }) => {
     const { plantId } = route.params;
@@ -60,7 +61,7 @@ const PlantDetailScreen = ({ route, navigation }) => {
             <ScrollView style={styles.scrollContainer}>
                 <View style={styles.imageContainer}>
                     <Image
-                        source={require('../assets/images/plants/alliums/garlic.png')} // This should be dynamic
+                        source={getPlantImage(plant.name.toLowerCase())}
                         style={styles.plantImage}
                         resizeMode="contain"
                     />

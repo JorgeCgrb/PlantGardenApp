@@ -39,7 +39,7 @@ const generatePlantsData = () => {
             'chives',
             'Chives',
             'alliums',
-            'assets/images/plants/alliums/chives.png',
+            'chives', // We'll use just the name; the assetUtils will resolve the full path
             'Chives are perennial herbs with mild onion flavor. They produce edible purple flowers that attract pollinators.',
             new GrowingInfo(
                 [1, 2, 3], // Start indoor months (Feb-Apr)
@@ -54,8 +54,8 @@ const generatePlantsData = () => {
             'garlic',
             'Garlic',
             'alliums',
-            'assets/images/plants/alliums/garlic.png',
-            'Garlic is a pungent bulb vegetable that's easy to grow. Plant in fall for harvest the following summer.',
+            'garlic', // Just the name for image lookup
+            'Garlic is a pungent bulb vegetable that is easy to grow. Plant in fall for harvest the following summer.',
             new GrowingInfo(
                 [], // Start indoor months
                 [], // Transplant months
@@ -69,7 +69,7 @@ const generatePlantsData = () => {
             'leeks',
             'Leeks',
             'alliums',
-            'assets/images/plants/alliums/leeks.png',
+            'leeks',
             'Leeks are cold-hardy alliums with a mild onion flavor. They require a long growing season.',
             new GrowingInfo(
                 [0, 1, 2], // Start indoor months (Jan-Mar)
@@ -84,7 +84,7 @@ const generatePlantsData = () => {
             'onions',
             'Onions',
             'alliums',
-            'assets/images/plants/alliums/onions.png',
+            'onions',
             'Onions are versatile vegetables grown for their bulbs. Choose varieties based on your daylight hours.',
             new GrowingInfo(
                 [0, 1, 2], // Start indoor months (Jan-Mar)
@@ -99,8 +99,8 @@ const generatePlantsData = () => {
             'shallots',
             'Shallots',
             'alliums',
-            'assets/images/plants/alliums/shallots.png',
-            'Shallots are milder than onions and grow in clusters. They're easy to grow and store well.',
+            'shallots',
+            'Shallots are milder than onions and grow in clusters. They are easy to grow and store well.',
             new GrowingInfo(
                 [], // Start indoor months
                 [], // Transplant months

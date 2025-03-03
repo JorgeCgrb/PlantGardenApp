@@ -1,3 +1,4 @@
+// src/navigation/AppNavigator.js
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -9,6 +10,7 @@ import GardensScreen from '../screens/GardensScreen';
 import PlantsScreen from '../screens/PlantsScreen';
 import CalendarScreen from '../screens/CalendarScreen';
 import GuideScreen from '../screens/GuideScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 import NewGardenScreen from '../screens/NewGardenScreen';
 import GardenDetailScreen from '../screens/GardenDetailScreen';
 import PlantDetailScreen from '../screens/PlantDetailScreen';
@@ -19,6 +21,7 @@ const GardensStack = createStackNavigator();
 const PlantsStack = createStackNavigator();
 const CalendarStack = createStackNavigator();
 const GuideStack = createStackNavigator();
+const SettingsStack = createStackNavigator();
 
 // Gardens stack
 function GardensStackScreen() {
@@ -56,6 +59,15 @@ function GuideStackScreen() {
         <GuideStack.Navigator>
             <GuideStack.Screen name="Guide" component={GuideScreen} />
         </GuideStack.Navigator>
+    );
+}
+
+// Settings stack
+function SettingsStackScreen() {
+    return (
+        <SettingsStack.Navigator>
+            <SettingsStack.Screen name="Settings" component={SettingsScreen} />
+        </SettingsStack.Navigator>
     );
 }
 
@@ -112,6 +124,16 @@ export default function AppNavigator() {
                     tabBarLabel: t('guide'),
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons name="book-open-variant" color={color} size={size} />
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="SettingsTab"
+                component={SettingsStackScreen}
+                options={{
+                    tabBarLabel: t('settings'),
+                    tabBarIcon: ({ color, size }) => (
+                        <MaterialCommunityIcons name="cog" color={color} size={size} />
                     ),
                 }}
             />
